@@ -79,3 +79,30 @@ button {
   background-color: #4caf50;
   color: #fff;
 }
+
+#backspace {
+  background-color: #fff;
+  color: #333;
+}
+
+.number:hover {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.operator:hover {
+  background-color: #ccc;
+  color: #333;
+}
+
+#clear:hover {
+  background-color: #ff7b73;
+}
+#equals:hover {
+  background-color: #56c153;
+}
+
+#backspace:hover {
+  background-color: #ccc;
+  color: #fff;
+}
