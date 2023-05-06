@@ -179,7 +179,6 @@ function backspaceClickHandler() {
   }
 }
 
-
 window.addEventListener("keydown", (e) => {
   const key = e.key;
   if (key >= "0" && key <= "9") {
@@ -210,4 +209,3 @@ window.addEventListener("keydown", (e) => {
     backspaceClickHandler();
   }
 });
-
