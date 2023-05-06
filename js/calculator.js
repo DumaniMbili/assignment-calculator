@@ -138,30 +138,6 @@ function decimalClickHandler() {
   }
 }
 
-/*const decimalButton = document.querySelector("#decimal");
-decimalButton.addEventListener("click", decimalClickHandler);
-
-function decimalClickHandler() {
-  const decimal = ".";
-  if (result !== "") {
-    clear();
-  }
-  if (operator === "") {
-    if (!firstNumber.includes(decimal)) {
-      firstNumber += decimal;
-      updateDisplay(firstNumber);
-    }
-  } else {
-    if (!secondNumber.includes(decimal)) {
-      secondNumber += decimal;
-      updateDisplay(secondNumber);
-    }
-  }
-  if (firstNumber.includes(decimal) || secondNumber.includes(decimal)) {
-    decimalButton.disabled = true;
-  }
-}*/
-
 const backspaceButton = document.querySelector("#backspace");
 backspaceButton.addEventListener("click", backspaceClickHandler);
 
