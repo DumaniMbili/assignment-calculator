@@ -56,9 +56,15 @@ function numberClickHandler(e) {
     clear();
   }
   if (operator === "") {
+    if (firstNumber.includes(".") && number === ".") {
+      return; // Do not allow multiple decimal points in the first number
+    }
     firstNumber += number;
     updateDisplay(firstNumber);
   } else {
+    if (secondNumber.includes(".") && number === ".") {
+      return; // Do not allow multiple decimal points in the second number
+    }
     secondNumber += number;
     updateDisplay(secondNumber);
   }
@@ -132,6 +138,30 @@ function decimalClickHandler() {
   }
 }
 
+/*const decimalButton = document.querySelector("#decimal");
+decimalButton.addEventListener("click", decimalClickHandler);
+
+function decimalClickHandler() {
+  const decimal = ".";
+  if (result !== "") {
+    clear();
+  }
+  if (operator === "") {
+    if (!firstNumber.includes(decimal)) {
+      firstNumber += decimal;
+      updateDisplay(firstNumber);
+    }
+  } else {
+    if (!secondNumber.includes(decimal)) {
+      secondNumber += decimal;
+      updateDisplay(secondNumber);
+    }
+  }
+  if (firstNumber.includes(decimal) || secondNumber.includes(decimal)) {
+    decimalButton.disabled = true;
+  }
+}*/
+
 const backspaceButton = document.querySelector("#backspace");
 backspaceButton.addEventListener("click", backspaceClickHandler);
 
@@ -149,23 +179,35 @@ function backspaceClickHandler() {
   }
 }
 
+
 window.addEventListener("keydown", (e) => {
   const key = e.key;
   if (key >= "0" && key <= "9") {
-    const button = document.querySelector(`button[data-number="${key}"]`);
-    button.click();
+    const number = key;
+    if (result !== "") {
+      clear();
+    }
+    if (operator === "") {
+      firstNumber += number;
+      updateDisplay(firstNumber);
+    } else {
+      secondNumber += number;
+      updateDisplay(secondNumber);
+    }
   } else if (key === "+" || key === "-" || key === "*" || key === "/") {
     const button = document.querySelector(`button[data-operator="${key}"]`);
-    button.click();
+    if (button) {
+      button.click();
+    }
   } else if (key === "=" || key === "Enter") {
     equalsClickHandler();
   } else if (key === ".") {
     const button = document.querySelector("#decimal");
-    if (!button.disabled) {
+    if (button && !button.disabled) {
       button.click();
     }
   } else if (key === "Backspace") {
-    const button = document.querySelector("#backspace");
-    button.click();
+    backspaceClickHandler();
   }
 });
+
