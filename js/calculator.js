@@ -84,9 +84,10 @@ function operatorClickHandler(e) {
     firstNumber = currentValue.toString();
     secondNumber = "";
     operator = newOperator;
-    updateDisplay(firstNumber);
+    updateDisplay(firstNumber + operator);
   } else {
     operator = newOperator;
+    updateDisplay(firstNumber + operator);
   }
 }
 
@@ -147,9 +148,17 @@ function backspaceClickHandler() {
     return;
   }
   if (operator === "") {
+    if (firstNumber.length === 0) {
+      return;
+    }
     firstNumber = firstNumber.slice(0, -1);
     updateDisplay(firstNumber);
   } else {
+    if (secondNumber.length === 0) {
+      operator = "";
+      updateDisplay(firstNumber);
+      return;
+    }
     secondNumber = secondNumber.slice(0, -1);
     updateDisplay(secondNumber);
   }
@@ -173,6 +182,7 @@ window.addEventListener("keydown", (e) => {
     const button = document.querySelector(`button[data-operator="${key}"]`);
     if (button) {
       button.click();
+      updateDisplay(firstNumber + operator);
     }
   } else if (key === "=" || key === "Enter") {
     equalsClickHandler();
