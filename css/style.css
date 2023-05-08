@@ -69,7 +69,6 @@ button {
 
 /* Clear button styles */
 #clear {
-  
   grid-row: 5/7;
   background-color: #ff6961;
   color: #fff;
